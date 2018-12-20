@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.donwae.garden.cactus.dao.UserMapper" >
+
+    <resultMap id="UserMap" type="com.donwae.garden.cactus.entity.User">
+        <id property="id" column="id" javaType="String" jdbcType="INTEGER" />
+        <result property="username" column="username" javaType="String" jdbcType="VARCHAR" />
+        <result property="password" column="password" javaType="String" jdbcType="VARCHAR" />
+        <result property="birthday" column="birthday" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="queryOne" parameterType="java.lang.String" resultMap="UserMap" >
+        select
+          *
+        from t_user
+        where
+          id = #{id}
+    </select>
+
+    <select id="queryOneByName" parameterType="java.lang.String" resultMap="UserMap" >
+        select
+          *
+        from t_user
+        where
+          username = #{username}
+    </select>
+
+    <insert id="insertOne" parameterType="com.donwae.garden.cactus.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user(username, password, birthday) values(#{username}, #{password}, #{birthday})
+    </insert>
+
+</mapper>

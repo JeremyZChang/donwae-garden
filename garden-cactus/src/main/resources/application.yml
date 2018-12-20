@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: cactus
+  datasource:
+    username: donwae
+    password: donwae1234
+    url: jdbc:mysql://localhost:3306/DONWAEDB?useUnicode=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  session:
+    store-type: none
+
+#security:
+#  basic:
+#    enabled: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.donwae.garden.cactus.entity
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+
+server:
+  port: 8084
+
+cactus:
+  security:
+    browser:
+      loginPage: /cactusSignin.html
+      loginType: JSON
+#
+#security:
+#  oauth2:
+#    client:
+#      client-id:
+#      client-secret:
